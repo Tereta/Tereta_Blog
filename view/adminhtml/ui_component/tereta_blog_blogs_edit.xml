@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tereta_blog_blogs_edit.tereta_blog_blogs_edit</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    
+    <settings>
+        <buttons>
+            <button name="back" class="Tereta\Blog\Block\Adminhtml\Block\Edit\BackButton" />
+            <button name="remove" class="Tereta\Blog\Block\Adminhtml\Block\Edit\RemoveButtonBlog" />
+            <button name="save" class="Tereta\Blog\Block\Adminhtml\Block\Edit\SaveButton" />
+            <button name="create_post" class="Tereta\Blog\Block\Adminhtml\Block\Edit\CreatePostButton" />
+        </buttons>
+        <namespace>tereta_blog_blogs_edit</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>tereta_blog_blogs_edit.tereta_blog_blogs_edit_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="tereta_blog_blogs_edit_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Tereta\Blog\Model\Ui\Blogs\DataProvider</argument>
+            <argument name="name" xsi:type="string">tereta_blog_blogs_edit_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="tereta_blog/blogs/save"/>
+        </settings>
+    </dataSource>
+
+    <fieldset name="tereta_blog_blogs_edit_fieldset">
+        <settings>
+            <label translate="true">Generic</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        
+        <!-- This field represents form id and is hidden -->
+        <field name="entity_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tereta_blog_blogs_edit</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="is_active">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Enabled</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="source" xsi:type="string">tereta_blog_blogs_edit</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="identifier">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Identefier</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tereta_blog_blogs_edit</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="store_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Store</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">integer</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">tereta_blog_blogs_edit</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+                <item name="options" xsi:type="object">Tereta\Blog\Model\Config\Source\Stores</item>
+            </argument>
+        </field>
+
+        <field name="title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Title</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tereta_blog_blogs_edit</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="description" formElement="wysiwyg">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">tereta_blog_blogs_edit</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <label/>
+                <dataScope>description</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+
+        <container name="path_url_container" sortOrder="160">
+            <htmlContent name="path_url_html_content">
+                <settings>
+                    <additionalClasses>
+                        <class name="admin__field">true</class>
+                    </additionalClasses>
+                </settings>
+                <block class="Tereta\Blog\Block\Adminhtml\Block\Fields\LinksBlog" name="path_url" as="path_url">
+                    <arguments>
+                        <argument name="label" translate="true" xsi:type="string">Link</argument>
+                    </arguments>
+                </block>
+            </htmlContent>
+        </container>
+    </fieldset>
+
+    <fieldset name="tereta_blog_blogs_edit_fieldset_seo">
+        <settings>
+            <label translate="true">SEO Configuration</label>
+            <collapsible>true</collapsible>
+            <opened>false</opened>
+        </settings>
+
+        <field name="seo_title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Title</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tereta_blog_blogs_edit</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="seo_url_key">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">URL Key</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tereta_blog_blogs_edit</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="meta_description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Meta Description</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tereta_blog_blogs_edit</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="meta_keywords">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Meta Keywords</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">tereta_blog_blogs_edit</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+
+    <fieldset name="grid_posts" sortOrder="40">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Created Posts</label>
+        </settings>
+        <container name="grid_posts" sortOrder="160">
+            <htmlContent name="html_content">
+                <block class="Tereta\Blog\Block\Adminhtml\Block\Widget\Post\Grid" name="grid_posts.grid" as="grid">
+                    <arguments>
+                        <argument name="id" xsi:type="string">postGrid</argument>
+                        <argument name="dataSource" xsi:type="object">Tereta\Blog\Model\ResourceModel\Post\Collection</argument>
+                        <argument name="default_sort" xsi:type="string">entity_id</argument>
+                        <argument name="default_dir" xsi:type="string">desc</argument>
+                        <argument name="save_parameters_in_session" xsi:type="boolean">false</argument>
+                        <argument name="use_ajax" xsi:type="boolean">true</argument>
+                        <argument name="grid_url" xsi:type="url" path="tereta_blog/blogs/postgrid">
+                            <param name="_current">1</param>
+                        </argument>
+                    </arguments>
+
+                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="grid_posts.grid.columnSet" as="grid.columnSet">
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="entity_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Post ID</argument>
+                                <argument name="type" xsi:type="string">number</argument>
+                                <argument name="id" xsi:type="string">entity_id</argument>
+                                <argument name="index" xsi:type="string">entity_id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="title">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Title</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="id" xsi:type="string">title</argument>
+                                <argument name="index" xsi:type="string">title</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="action">
+                            <arguments>
+                                <argument name="id" xsi:type="string">action</argument>
+                                <argument name="header" xsi:type="string" translate="true">Action</argument>
+                                <argument name="type" xsi:type="string">action</argument>
+                                <argument name="getter" xsi:type="string">getId</argument>
+                                <argument name="filter" xsi:type="boolean">false</argument>
+                                <argument name="sortable" xsi:type="boolean">false</argument>
+                                <argument name="index" xsi:type="string">stores</argument>
+                                <argument name="is_system" xsi:type="boolean">true</argument>
+                                <argument name="actions" xsi:type="array">
+                                    <item name="view_action" xsi:type="array">
+                                        <item name="caption" xsi:type="string" translate="true">
+                                            Edit
+                                        </item>
+                                        <item name="url" xsi:type="array">
+                                            <item name="base" xsi:type="string">tereta_blog/posts/edit</item>
+                                        </item>
+                                        <item name="field" xsi:type="string">entity_id</item>
+                                    </item>
+                                </argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

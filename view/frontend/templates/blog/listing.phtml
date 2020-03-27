@@ -1,0 +1,7 @@
+<div class="tereta-blog-listing">
+    <?php foreach($posts as $post) : ?>
+        <div class="post">
+            <div class="link"><a href="<?php echo $post->getUrl() ?>"><?php echo $post->getTitle() ?></a></div>
+        </div>
+    <?php endforeach ?>
+</div>

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>List of Posts</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Backend\Block\Widget\Grid\Container" name="tereta_blog.grid.container">
+                <arguments>
+                    <argument name="controller" xsi:type="string">tereta_blog_blogs_postgrid</argument>
+                    <argument name="block_group" xsi:type="string">Tereta_Blog</argument>
+                    <argument name="header_text" xsi:type="string">List of Posts</argument>
+                </arguments>
+
+                <block class="Tereta\Blog\Block\Adminhtml\Block\Widget\Post\Grid" name="tereta_blog.grid" as="grid">
+                    <arguments>
+                        <argument name="id" xsi:type="string">postGrid</argument>
+                        <argument name="dataSource" xsi:type="object">Tereta\Blog\Model\ResourceModel\Post\Collection</argument>
+                        <argument name="default_sort" xsi:type="string">entity_id</argument>
+                        <argument name="default_dir" xsi:type="string">desc</argument>
+                        <argument name="save_parameters_in_session" xsi:type="boolean">false</argument>
+                        <argument name="use_ajax" xsi:type="boolean">true</argument>
+                        <argument name="grid_url" xsi:type="url" path="tereta_blog/blogs/postgrid">
+                            <param name="_current">1</param>
+                        </argument>
+                    </arguments>
+
+                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="grid_posts.grid.columnSet" as="grid.columnSet">
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="entity_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Post ID</argument>
+                                <argument name="type" xsi:type="string">number</argument>
+                                <argument name="id" xsi:type="string">entity_id</argument>
+                                <argument name="index" xsi:type="string">entity_id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="title">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Title</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="id" xsi:type="string">title</argument>
+                                <argument name="index" xsi:type="string">title</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="action" acl="Tereta_Blog::blog">
+                            <arguments>
+                                <argument name="id" xsi:type="string">action</argument>
+                                <argument name="header" xsi:type="string" translate="true">Action</argument>
+                                <argument name="type" xsi:type="string">action</argument>
+                                <argument name="getter" xsi:type="string">getId</argument>
+                                <argument name="filter" xsi:type="boolean">false</argument>
+                                <argument name="sortable" xsi:type="boolean">false</argument>
+                                <argument name="index" xsi:type="string">stores</argument>
+                                <argument name="is_system" xsi:type="boolean">true</argument>
+                                <argument name="actions" xsi:type="array">
+                                    <item name="view_action" xsi:type="array">
+                                        <item name="caption" xsi:type="string" translate="true">Edit</item>
+                                        <item name="url" xsi:type="array">
+                                            <item name="base" xsi:type="string">tereta_blog/posts/edit</item>
+                                        </item>
+                                        <item name="field" xsi:type="string">entity_id</item>
+                                    </item>
+                                </argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,50 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="tereta_blog_blogs_listing_data_source" xsi:type="string">Tereta\Blog\Model\ResourceModel\Blog\Collection\Grid</item>
+                <item name="tereta_blog_blogs_edit_listing_data_source" xsi:type="string">Tereta\Blog\Model\ResourceModel\Post\Collection\Grid</item>
+                <item name="tereta_blog_posts_listing_data_source" xsi:type="string">Tereta\Blog\Model\ResourceModel\Post\Collection\Grid</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Tereta\Blog\Model\ResourceModel\Blog\Collection\Grid" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tereta_blog</argument>
+            <argument name="resourceModel" xsi:type="string">Tereta\Blog\Model\ResourceModel\Blog</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Tereta\Blog\Model\ResourceModel\Post\Collection\Grid" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tereta_blog_post</argument>
+            <argument name="resourceModel" xsi:type="string">Tereta\Blog\Model\ResourceModel\Post</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Tereta\Blog\Block\Adminhtml\Block\Edit\CreatePostButton">
+        <arguments>
+            <argument name="genericModel" xsi:type="object">Tereta\Blog\Model\Blog</argument>
+        </arguments>
+    </type>
+    <virtualType name="Tereta\Blog\Block\Adminhtml\Block\Edit\RemoveButtonPost" type="Tereta\Blog\Block\Adminhtml\Block\Edit\RemoveButton">
+        <arguments>
+            <argument name="genericModel" xsi:type="object">Tereta\Blog\Model\Post</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Tereta\Blog\Block\Adminhtml\Block\Edit\RemoveButtonBlog" type="Tereta\Blog\Block\Adminhtml\Block\Edit\RemoveButton">
+        <arguments>
+            <argument name="genericModel" xsi:type="object">Tereta\Blog\Model\Blog</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Tereta\Blog\Block\Adminhtml\Block\Fields\LinksPost" type="Tereta\Blog\Block\Adminhtml\Block\Fields\Links">
+        <arguments>
+            <argument name="modelRepository" xsi:type="object">Tereta\Blog\Model\PostRepository</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Tereta\Blog\Block\Adminhtml\Block\Fields\LinksBlog" type="Tereta\Blog\Block\Adminhtml\Block\Fields\Links">
+        <arguments>
+            <argument name="modelRepository" xsi:type="object">Tereta\Blog\Model\BlogRepository</argument>
+        </arguments>
+    </virtualType>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tereta_Blog::blog" title="Blog" translate="title" module="Tereta_Blog" sortOrder="50" resource="Tereta_Blog::blog" parent="Magento_Backend::content"/>
+        <add id="Tereta_Blog::blog_blogs" title="Blogs" translate="title" module="Tereta_Blog" sortOrder="50" resource="Tereta_Blog::blog_listing" parent="Tereta_Blog::blog" action="tereta_blog/blogs/listing"/>
+        <add id="Tereta_Blog::blog_posts" title="Posts" translate="title" module="Tereta_Blog" sortOrder="50" resource="Tereta_Blog::blog_posts" parent="Tereta_Blog::blog" action="tereta_blog/posts/listing"/>
+    </menu>
+</config>
