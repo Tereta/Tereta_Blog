@@ -78,6 +78,10 @@ class Links extends Template
         $entityId = $this->getRequest()->getParam('entity_id');
         $entityModel = $this->repository->getById($entityId);
 
+        if (!$entityModel){
+            return;
+        }
+
         $this->assign('label', $this->getLabel());
         $this->assign('link', $entityModel->getUrl());
 

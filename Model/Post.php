@@ -110,7 +110,7 @@ class Post extends GenericModel{
      */
     public function getStoreId()
     {
-        $blogModel = $this->getBlogModel();
+        $blogModel = $this->getBlog();
         return $blogModel->getStoreId();
     }
 

@@ -99,7 +99,9 @@ class Grid extends DataProviderParent
         }
 
         $blogCollection = $this->blogCollectionFactory->create();
-        $blogCollection->addFieldToFilter('entity_id', ["in" => [$loadBlogIds]]);
+        if ($loadBlogIds){
+            $blogCollection->addFieldToFilter('entity_id', ["in" => [$loadBlogIds]]);
+        }
 
         $titleAssoc = [];
         foreach($blogCollection as $itemBlog){

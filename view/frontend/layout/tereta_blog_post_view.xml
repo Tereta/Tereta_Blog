@@ -7,9 +7,9 @@
                 <argument translate="true" name="title" xsi:type="string">First 2</argument>
             </action>
         </referenceBlock>
-    </body>
 
-    <referenceContainer name="main">
-        <block class="Tereta\Blog\Block\Post\Content" name="post.content" />
-    </referenceContainer>
+        <referenceContainer name="main">
+            <block class="Tereta\Blog\Block\Post\Content" name="post.content" />
+        </referenceContainer>
+    </body>
 </page>
